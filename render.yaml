@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: ai-expense-backend
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: ai-expense-db
+          property: host
+      - key: DB_NAME
+        fromDatabase:
+          name: ai-expense-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: ai-expense-db
+          property: user
+      - key: DB_PASS
+        fromDatabase:
+          name: ai-expense-db
+          property: password
+      - key: DB_PORT
+        fromDatabase:
+          name: ai-expense-db
+          property: port
+  
+  - type: web
+    name: ai-expense-frontend
+    env: node
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NEXT_PUBLIC_API_BASE_URL
+        fromService:
+          type: web
+          name: ai-expense-backend
+          envVarKey: RENDER_EXTERNAL_URL
+
+databases:
+  - name: ai-expense-db
+    databaseName: expense_tracker
+    user: expense_user
