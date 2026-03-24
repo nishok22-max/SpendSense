@@ -623,6 +623,17 @@ def get_insights(
     return insights
 
 
+@app.get("/api/admin/users")
+def admin_users():
+    conn = get_conn()
+    cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+    cur.execute("SELECT id, name, email, created_at FROM users ORDER BY created_at DESC")
+    users = [dict(r) for r in cur.fetchall()]
+    cur.close()
+    conn.close()
+    return {"total": len(users), "users": users}
+
+
 @app.get("/")
 def root():
     return {"status": "ok", "message": "AI Expense Analyser API is running"}
