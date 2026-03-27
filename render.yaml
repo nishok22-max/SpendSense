@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: ai-expense-backend
+    name: spendsense-app-v2-backend
     plan: free
     env: python
     rootDir: backend
@@ -9,27 +9,27 @@ services:
     envVars:
       - key: DB_HOST
         fromDatabase:
-          name: ai-expense-db
+          name: spendsense-app-v2-db
           property: host
       - key: DB_NAME
         fromDatabase:
-          name: ai-expense-db
+          name: spendsense-app-v2-db
           property: database
       - key: DB_USER
         fromDatabase:
-          name: ai-expense-db
+          name: spendsense-app-v2-db
           property: user
       - key: DB_PASS
         fromDatabase:
-          name: ai-expense-db
+          name: spendsense-app-v2-db
           property: password
       - key: DB_PORT
         fromDatabase:
-          name: ai-expense-db
+          name: spendsense-app-v2-db
           property: port
   
   - type: web
-    name: ai-expense-frontend
+    name: spendsense-app-v2-frontend
     plan: free
     env: node
     rootDir: frontend
@@ -39,11 +39,11 @@ services:
       - key: NEXT_PUBLIC_API_BASE_URL
         fromService:
           type: web
-          name: ai-expense-backend
+          name: spendsense-app-v2-backend
           envVarKey: RENDER_EXTERNAL_URL
 
 databases:
-  - name: ai-expense-db
+  - name: spendsense-app-v2-db
     plan: free
     databaseName: expense_tracker
     user: expense_user
