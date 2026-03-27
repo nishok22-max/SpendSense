@@ -326,21 +326,16 @@ function AnalyticsContent() {
           </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2">
           <div className="rounded-xl border border-border bg-card p-4">
             <p className="text-sm text-muted-foreground">Total Spending</p>
             <p className="mt-1 text-2xl font-bold text-card-foreground">
               ${totalSpending.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </p>
-            <p className="mt-1 text-sm text-muted-foreground">Extracted from {categoryData.length} categories</p>
+            <p className="mt-1 text-sm text-muted-foreground">{categoryData.length} categories tracked</p>
           </div>
           <div className="rounded-xl border border-border bg-card p-4">
-            <p className="text-sm text-muted-foreground">AI Prediction Accuracy</p>
-            <p className="mt-1 text-2xl font-bold text-emerald-400">{predictionAccuracy}%</p>
-            <p className="mt-1 text-sm text-emerald-500/70">Powered by Explainable AI</p>
-          </div>
-          <div className="rounded-xl border border-border bg-card p-4">
-            <p className="text-sm text-muted-foreground">Highest Category</p>
+            <p className="text-sm text-muted-foreground">Highest Spending Category</p>
             <p className="mt-1 text-2xl font-bold text-card-foreground">{highestCat.name}</p>
             <p className="mt-1 text-sm text-muted-foreground">
               ${Math.abs(highestCat.value).toLocaleString()} ({totalSpending > 0 ? ((highestCat.value / totalSpending) * 100).toFixed(1) : 0}%)

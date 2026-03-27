@@ -12,14 +12,18 @@ import {
   Lightbulb,
   Settings,
   Sparkles,
+  PiggyBank,
+  TrendingUp,
 } from "lucide-react"
 
 const navigation = [
   { name: "Dashboard", href: "/", icon: LayoutDashboard },
   { name: "Upload Transactions", href: "/upload", icon: Upload },
+  { name: "Bank Analyzer", href: "/bank-analyzer", icon: TrendingUp },
   { name: "AI Categorization", href: "/categorization", icon: Brain },
   { name: "Spending Analytics", href: "/analytics", icon: PieChart },
-  { name: "Insights", href: "/insights", icon: Lightbulb },
+  { name: "AI Insights", href: "/insights", icon: Lightbulb },
+  { name: "Budget vs Actual", href: "/budget", icon: PiggyBank },
   { name: "Settings", href: "/settings", icon: Settings },
 ]
 
@@ -34,7 +38,7 @@ export function Sidebar() {
           <Sparkles className="h-5 w-5 text-primary-foreground" />
         </div>
         <span className="text-lg font-semibold text-sidebar-foreground">
-          AI EXPENSE ANALYSER
+          SpendSense
         </span>
       </div>
 

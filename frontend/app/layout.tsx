@@ -4,7 +4,7 @@ import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'AI EXPENSE ANALYSER - Smart Expense Categorization',
+  title: 'SpendSense - Smart Expense Categorization',
   description: 'AI-powered expense categorization platform with explainable AI insights',
   generator: 'v0.app',
   icons: {

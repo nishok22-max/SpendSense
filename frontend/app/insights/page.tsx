@@ -174,23 +174,8 @@ function InsightsContent() {
         </div>
 
         {/* Summary Cards */}
-        <div className="grid gap-4 sm:grid-cols-3">
-          <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/20">
-                <TrendingDown className="h-5 w-5 text-emerald-400" />
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">
-                  Potential Savings
-                </p>
-                <p className="text-xl font-bold text-emerald-400">
-                  $136.97/mo
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-4">
+        <div className="flex flex-wrap gap-4">
+          <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-4 min-w-[250px]">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/20">
                 <AlertTriangle className="h-5 w-5 text-amber-400" />
@@ -200,17 +185,6 @@ function InsightsContent() {
                   Anomalies Detected
                 </p>
                 <p className="text-xl font-bold text-amber-400">2</p>
-              </div>
-            </div>
-          </div>
-          <div className="rounded-xl border border-chart-1/30 bg-chart-1/5 p-4">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-chart-1/20">
-                <Target className="h-5 w-5 text-chart-1" />
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Budget Health</p>
-                <p className="text-xl font-bold text-chart-1">Good</p>
               </div>
             </div>
           </div>

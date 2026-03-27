@@ -1,18 +1,20 @@
 const configuredApiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "")
 
-export function getApiUrl(path: string): string {
-  if (!path.startsWith("/")) {
-    throw new Error(`API paths must start with "/". Received: ${path}`)
-  }
-  if (configuredApiBaseUrl) {
-    return `${configuredApiBaseUrl}${path}`
-  }
+export function getApiBase(): string {
+  if (configuredApiBaseUrl) return configuredApiBaseUrl
   if (typeof window !== "undefined") {
     const { protocol, hostname } = window.location
-    return `${protocol}//${hostname}:8000${path}`
+    const host = hostname === "localhost" ? "127.0.0.1" : hostname
+    return `${protocol}//${host}:8000`
   }
-  return `http://127.0.0.1:8000${path}`
+  return "http://127.0.0.1:8000"
 }
+
+export function getApiUrl(path: string): string {
+  if (!path.startsWith("/")) throw new Error(`API paths must start with "/". Received: ${path}`)
+  return `${getApiBase()}${path}`
+}
+
 
 export async function fetchApiJson<T>(path: string, init?: RequestInit): Promise<T> {
   const headers = new Headers(init?.headers)

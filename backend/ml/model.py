@@ -67,6 +67,10 @@ class ExpenseCategorizer:
             if contributions[idx] > 0 and len(keywords) < 2:
                 keywords.append(feature_names[idx])
                 
+        # Fallback if the prediction is completely unsure or no keyword was found natively
+        if confidence < 40.0 or not keywords:
+            pred_idx = "Other"
+                
         return {
             "category": pred_idx,
             "confidence": confidence,
@@ -110,6 +114,9 @@ class ExpenseCategorizer:
                 if contributions[idx] > 0 and len(keywords) < 2:
                     global_col_idx = col_indices[idx]
                     keywords.append(feature_names[global_col_idx])
+                    
+            if confidence < 40.0 or not keywords:
+                pred_idx = "Other"
                     
             results.append({
                 "category": str(pred_idx),
