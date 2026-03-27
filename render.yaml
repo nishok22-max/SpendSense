@@ -1,6 +1,7 @@
 services:
   - type: web
     name: ai-expense-backend
+    plan: free
     env: python
     rootDir: backend
     buildCommand: pip install -r requirements.txt
@@ -29,6 +30,7 @@ services:
   
   - type: web
     name: ai-expense-frontend
+    plan: free
     env: node
     rootDir: frontend
     buildCommand: npm install && npm run build
@@ -42,5 +44,6 @@ services:
 
 databases:
   - name: ai-expense-db
+    plan: free
     databaseName: expense_tracker
     user: expense_user
